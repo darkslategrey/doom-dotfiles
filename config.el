@@ -9,6 +9,7 @@
 (setq user-full-name "John Doe"
       user-mail-address "john@doe.com")
 
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -32,7 +33,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-miramare)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -74,3 +76,33 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq doom-font (font-spec :family "Source Code Pro" :size 18))
+(setq web-mode-markup-indent-offset 2)
+(setq ispell-dictionary  "fr")
+
+;; python
+;;
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+(require 'dap-python)
+;(setq dap-python-debugger 'debugy)
+(setq dap-python-debugger 'debugpy)
+
+;; org roam
+;;
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory "~/RoamNotes")
+  (org-roam-complete-everywhere t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point))
+  :config
+  (org-roam-db-autosync-enable))
+
+;; ("C-M-i" . completion-at-point-functions))
