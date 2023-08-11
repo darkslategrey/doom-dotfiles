@@ -77,7 +77,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 18))
+(setq doom-font (font-spec :family "Source Code Pro" :size 15))
 (setq web-mode-markup-indent-offset 2)
 (setq ispell-dictionary  "fr")
 
