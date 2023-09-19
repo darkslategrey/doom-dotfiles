@@ -53,3 +53,5 @@
 ;; (package! easy-jekyll)
 (package! magit-gitflow)
 (package! dap-mode)
+(package! terraform-mode)
+;;(package! org-roam)

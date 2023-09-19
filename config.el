@@ -88,6 +88,11 @@
 ;(setq dap-python-debugger 'debugy)
 (setq dap-python-debugger 'debugpy)
 
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 ;; org roam
 ;;
 (use-package org-roam
@@ -106,3 +111,10 @@
   (org-roam-db-autosync-enable))
 
 ;; ("C-M-i" . completion-at-point-functions))
+(add-to-list 'load-path "/home/greg/.config/doom")
+(require 'asdf)
+
+(asdf-enable) ;; This ensures Emacs has the correct paths to asdf shims and bin
+
+(setq! lsp-enable-file-watchers nil)
+(setq! lsp-ui-doc-mode t)
