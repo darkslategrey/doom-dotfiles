@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Gregory"
+      user-mail-address "gregory@retailshake.com")
 
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -77,7 +77,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 15))
+(setq doom-font (font-spec :family "Source Code Pro" :size 19 ))
 (setq web-mode-markup-indent-offset 2)
 (setq ispell-dictionary  "fr")
 
