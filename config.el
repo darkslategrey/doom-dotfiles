@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Gregory"
-      user-mail-address "gregory@retailshake.com")
+(setq user-full-name "Gregory Faruch"
+      user-mail-address "greg.faruch@gmail.com")
 
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -76,10 +76,23 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
+;; (setq doom-font (Iosevka Nerd Font 15
 (setq doom-font (font-spec :family "Source Code Pro" :size 19 ))
 (setq web-mode-markup-indent-offset 2)
 (setq ispell-dictionary  "fr")
+
+;; elixir
+;;(package-require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
+(use-package lsp-mode
+  :commands lsp
+  :ensure t
+  :diminish lsp-mode
+  :hook
+  (elixir-mode . lsp)
+  :init
+  (add-to-list 'exec-path "/home/greg/SOFTS/elixir-ls"))
 
 ;; python
 ;;
@@ -92,7 +105,12 @@
   :ensure t
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
+                          (lsp-deferred))))  ; or lsp-deferred
+;;                          (lsp))))  ; or lsp-deferred
+
+;; (use-package poetry
+;;   :ensure t)
+
 ;; org roam
 ;;
 (use-package org-roam
@@ -113,8 +131,38 @@
 ;; ("C-M-i" . completion-at-point-functions))
 (add-to-list 'load-path "/home/greg/.config/doom")
 (require 'asdf)
-
+;; (require 'just-mode)
 (asdf-enable) ;; This ensures Emacs has the correct paths to asdf shims and bin
 
 (setq! lsp-enable-file-watchers nil)
 (setq! lsp-ui-doc-mode t)
+
+(require 'multi-term)
+(setq multi-term-program "/usr/bin/zsh")
+
+
+;; Set global LSP options
+(after! lsp-mode (
+                  setq lsp-lens-enable t
+                  lsp-ui-peek-enable t
+                  lsp-ui-doc-enable nil
+                  lsp-ui-doc-position 'bottom
+                  lsp-ui-doc-max-height 70
+                  lsp-ui-doc-max-width 150
+                  lsp-ui-sideline-show-diagnostics t
+                  lsp-ui-sideline-show-hover nil
+                  lsp-ui-sideline-show-code-actions t
+                  lsp-ui-sideline-diagnostic-max-lines 20
+                  lsp-ui-sideline-ignore-duplicate t
+                  lsp-ui-sideline-enable t))
+(setq lsp-enable-folding t)
+;; Add origami and LSP integration
+(use-package! lsp-origami)
+(add-hook! 'lsp-after-open-hook #'lsp-origami-try-enable)
+(setq rubocop-autocorrect-command "rubocop -A --format emacs")
+;; (add-hook 'ruby-mode-hook 'robe-mode)
+;; (add-hook 'ruby-ts-mode-hook 'robe-mode)
+
+;; ;;(global-robe-mode)
+;; (eval-after-load 'company
+;;   '(push 'company-robe company-backends))
