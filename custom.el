@@ -6,7 +6,7 @@
  '(helm-minibuffer-history-key "M-p")
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(package-selected-packages
-   '(company-terraform dockerfile-mode easy-jekyll go-mode google-translate
+   '(company-terraform dockerfile-mode easy-jekyll ellama go-mode google-translate
      helm-robe jinja2-mode just-mode justl lsp-pyright lsp-treemacs modus-themes
      multi-vterm mustache-mode org-roam pipenv poetry robe sly-asdf
      terraform-doc terraform-mode vagrant vagrant-tramp)))

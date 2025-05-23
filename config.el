@@ -130,9 +130,9 @@
 
 ;; ("C-M-i" . completion-at-point-functions))
 (add-to-list 'load-path "/home/greg/.config/doom")
-(require 'asdf)
+;;(require 'asdf)
 ;; (require 'just-mode)
-(asdf-enable) ;; This ensures Emacs has the correct paths to asdf shims and bin
+;;(asdf-enable) ;; This ensures Emacs has the correct paths to asdf shims and bin
 
 (setq! lsp-enable-file-watchers nil)
 (setq! lsp-ui-doc-mode t)
